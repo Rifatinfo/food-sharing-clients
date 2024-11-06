@@ -14,9 +14,9 @@ const Navbar = () => {
     const [open, setOpen] = useState(false);
 
     return (
-        <div className="w-full fixed top-0 left-0">
+        <div className="w-full fixed z-10 bg-opacity-30 bg-black top-0 left-0">
             <div className="md:flex items-center justify-between bg-transparent py-4 md:px-10 px-7">
-                <div className="font-bold text-2xl cursor-pointer flex items-center text-white">
+                <div className="font-bold text-xl cursor-pointer flex items-center text-white">
                     <p className="tracking-28p">BISTRO BOSS <br/><span className="tracking-38p">Restaurant</span></p>
                 </div>
                 {/* React icon nav */}
@@ -31,7 +31,7 @@ const Navbar = () => {
                 >
                     {Links.map((link, index) => (
                         <li key={index} className="md:ml-8 text-xl md:my-0 my-7">
-                            <a href={link.link} className="duration-500 text-white ">{link.name}</a>
+                            <a href={link.link} className="duration-500 text-white">{link.name}</a>
                         </li>
                     ))}
                    
