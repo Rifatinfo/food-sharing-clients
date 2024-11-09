@@ -6,9 +6,7 @@ import { IoClose } from "react-icons/io5";
 const Navbar = () => {
     const Links = [
         { name: 'Home', link: '/' },
-        { name: 'About', link: '/about' },
-        { name: 'Service', link: '/service' },
-        { name: 'Contact', link: '/contact' }
+        { name: 'Our Menu', link: '/menu' },
     ];
     
     const [open, setOpen] = useState(false);

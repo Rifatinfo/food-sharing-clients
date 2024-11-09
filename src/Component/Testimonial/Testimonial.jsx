@@ -12,6 +12,7 @@ import '@smastrom/react-rating/style.css'
 const Testimonial = () => {
     const [reviews, setReviews] = useState([]);
     const [rating, setRating] = useState(3);
+    console.log(rating.length);
     useEffect(() => {
         fetch('reviews.json')
             .then(res => res.json())
@@ -30,8 +31,8 @@ const Testimonial = () => {
                     reviews.map(review => <SwiperSlide
                         key={review._id}
                     >
-                        <div className="m-24 text-center">
-                            <Rating
+                        <div className="m-24 text-center items-center justify-center">
+                            <Rating className="text-center mx-auto"
                                 style={{ maxWidth: 180 }}
                                 value={review.rating}
                                 onChange={setRating}
