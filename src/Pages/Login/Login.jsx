@@ -1,16 +1,26 @@
 /* eslint-disable react/no-unknown-property */
-import { useEffect, useRef, useState } from 'react';
+import { useContext, useEffect, useRef, useState } from 'react';
 import { loadCaptchaEnginge, LoadCanvasTemplate, validateCaptcha } from 'react-simple-captcha';
+import { AuthContext } from '../../Provider/AuthProvider';
 const Login = () => {
     const [disabled, setDisabled] = useState(true);
     const  captchaRef = useRef(null);
+    
+    const {signIn} = useContext(AuthContext)
     const handleLogin = (e) => {
         e.preventDefault();
         const form = e.target;
         const email = form.email.value;
         const password = form.password.value;
         console.log(email, password);
-
+         signIn(email, password)
+         .then(result => {
+            const user = result.user;
+            console.log(user);
+         })
+         .catch(err => {
+           console.log(err.message);
+        })
     }
     useEffect(() => {
         loadCaptchaEnginge(6);
