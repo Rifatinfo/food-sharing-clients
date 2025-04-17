@@ -2,11 +2,14 @@ import { RiMenuAddFill } from "react-icons/ri";
 import { useContext, useState } from "react";
 import { IoClose } from "react-icons/io5";
 import { AuthContext } from "../Provider/AuthProvider";
+import { FaShoppingBag } from "react-icons/fa";
+import UseCart from "../hooks/UseCart";
 
 
 const Navbar = () => {
     const [open, setOpen] = useState(false);
-    const { user , signOut} = useContext(AuthContext);
+    const { user , logOut} = useContext(AuthContext);
+    const [cart] = UseCart()
     const Links = [
         { name: 'Home', link: '/' },
         { name: 'Our Menu', link: '/menu' },
@@ -16,9 +19,15 @@ const Navbar = () => {
     ];
 
     const handleSignOut = () => {
-        signOut()
-        .then()
-        .catch()
+        logOut()
+      .then(() => {
+        console.log("successfully sign Out");
+      })
+      .catch((err) => {
+        console.log(err.message);
+
+      })
+
     }
     return (
         <div className="w-full fixed z-10 bg-opacity-30 bg-black top-0 left-0">
@@ -49,12 +58,19 @@ const Navbar = () => {
                                 Sign out
                             </button>
                         </li>
+                         {/* card button  */}
+                         <li className="md:ml-8 text-xl md:my-0 my-7">
+                            <a href="/sign-up" className="duration-500 text-white">+{cart.length}</a>
+                            <a href="/sign-up" className="duration-500 text-white"><FaShoppingBag /></a>
+                        </li>
                     </> : <><li className="md:ml-8 text-xl md:my-0 my-7">
                         <a href="/login" className="duration-500 text-white">Login</a>
                     </li>
                         <li className="md:ml-8 text-xl md:my-0 my-7">
                             <a href="/sign-up" className="duration-500 text-white">SignUp</a>
-                        </li></>}
+                        </li>
+                       
+                        </>}
 
                 </ul>
             </div>
